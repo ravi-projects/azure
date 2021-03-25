@@ -1,0 +1,9 @@
+{
+	"name": "adf-demo-uos",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a474a1e8-f331-4b5e-8954-126d67fa12fd",
+		"tenantId": "d90bdb8e-661a-4f9b-9759-d3551f549578"
+	}
+}
