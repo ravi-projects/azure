@@ -4,7 +4,7 @@
 		"description": "Main Pipeline",
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "CSV_Ingest",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
