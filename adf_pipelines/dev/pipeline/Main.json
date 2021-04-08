@@ -86,6 +86,34 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "send-email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CSV_Ingest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-01.uksouth.logic.azure.com/workflows/4c7dc745d888485caa40f5670d2fc8f6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PoFiPoh0dKNNoO5ZIDQ_uv4VsuHRxnveP6Jpf2ooXTI",
+					"method": "POST",
+					"body": {
+						"value": "{\n\"title\" : \"PIPELINE RUN FINISHED\",\n\"message\" : \"Pipeline run finished successfully\",\n\"dataFactoryName\" : \"@{pipeline().DataFactory}\",\n\"pipelineName\" : \"@{pipeline().Pipeline}\",\n\"pipelineRunId\" : \"@{pipeline().RunId}\",\n\"time\" : \"@{utcnow()}\"\n}",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"annotations": []
